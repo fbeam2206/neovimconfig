@@ -1,0 +1,83 @@
+-- colors/mytheme.lua
+-- A basic Neovim colorscheme with transparent gutter
+
+-- Clear any existing highlights
+vim.cmd("highlight clear")
+if vim.fn.exists("syntax_on") then
+    vim.cmd("syntax reset")
+end
+
+-- Set colorscheme name
+vim.g.colors_name = "mytheme"
+
+-- Define color palette
+local colors = {
+    bg = "#1e1e1e",
+    fg = "#d4d4d4",
+    comment = "#6a9955",
+    keyword = "#569cd6",
+    string = "#ce9178",
+    function_name = "#dcdcaa",
+    variable = "#9cdcfe",
+    error = "#f44747",
+    warning = "#ffcc02",
+    info = "#75beff",
+    hint = "#eeeeeeb3",
+}
+
+-- Helper function to set highlights
+local function hl(group, opts)
+    vim.api.nvim_set_hl(0, group, opts)
+end
+
+-- Basic syntax highlighting
+hl("Normal", { fg = colors.fg, bg = colors.bg })
+hl("Comment", { fg = colors.comment, italic = true })
+hl("Keyword", { fg = colors.keyword, bold = true })
+hl("String", { fg = colors.string })
+hl("Function", { fg = colors.function_name })
+hl("Identifier", { fg = colors.variable })
+
+-- UI elements with transparent backgrounds
+hl("LineNr", { fg = "#858585", bg = "NONE" })           -- Line numbers
+hl("CursorLineNr", { fg = colors.fg, bg = "NONE", bold = true }) -- Current line number
+hl("SignColumn", { fg = colors.fg, bg = "NONE" })       -- Sign column (git signs, diagnostics)
+hl("FoldColumn", { fg = "#858585", bg = "NONE" })       -- Fold column
+
+-- Other UI elements you might want transparent
+hl("VertSplit", { fg = "#444444", bg = "NONE" })        -- Vertical splits
+hl("StatusLine", { fg = colors.fg, bg = "#2d2d2d" })
+hl("StatusLineNC", { fg = "#858585", bg = "#2d2d2d" })
+hl("TabLine", { fg = "#858585", bg = "NONE" })
+hl("TabLineFill", { bg = "NONE" })
+hl("TabLineSel", { fg = colors.fg, bg = colors.bg })
+
+-- Cursor and selections
+hl("Cursor", { reverse = true })
+hl("CursorLine", { bg = "#2d2d2d" })
+hl("Visual", { bg = "#264f78" })
+hl("Search", { fg = colors.bg, bg = colors.warning })
+
+-- Popup menus
+hl("Pmenu", { fg = colors.fg, bg = "#252526" })
+hl("PmenuSel", { fg = colors.bg, bg = colors.info })
+hl("PmenuSbar", { bg = "#444444" })
+hl("PmenuThumb", { bg = "#858585" })
+
+-- Diagnostics
+hl("DiagnosticError", { fg = colors.error })
+hl("DiagnosticWarn", { fg = colors.warning })
+hl("DiagnosticInfo", { fg = colors.info })
+hl("DiagnosticHint", { fg = colors.hint })
+
+-- Git signs (if using gitsigns.nvim)
+hl("GitSignsAdd", { fg = "#587c0c", bg = "NONE" })
+hl("GitSignsChange", { fg = colors.warning, bg = "NONE" })
+hl("GitSignsDelete", { fg = colors.error, bg = "NONE" })
+
+-- Tree-sitter highlights (optional, for better syntax highlighting)
+hl("@comment", { link = "Comment" })
+hl("@keyword", { link = "Keyword" })
+hl("@string", { link = "String" })
+hl("@function", { link = "Function" })
+hl("@variable", { link = "Identifier" })
