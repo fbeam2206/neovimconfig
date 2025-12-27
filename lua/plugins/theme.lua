@@ -96,7 +96,6 @@ return{
       vim.g.zenbones = {
         transparent_background = true,
       }
-      vim.cmd.colorscheme('zenbones') 
     end,
   }
 }
