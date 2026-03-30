@@ -13,9 +13,10 @@ return{
     local cmp = require("cmp")
     local lspkind = require("lspkind")
     require("luasnip.loaders.from_vscode").lazy_load()
+    vim.opt.pumheight = 7
     cmp.setup({
       performance = {
-        max_view_entries = 7,  -- Limit to 7 items shown at once
+        max_view_entries = 1000,  -- Limit to 7 items shown at once
       },
       snippet = {
         expand = function(args)
@@ -26,6 +27,7 @@ return{
         completion = cmp.config.window.bordered({
               max_width = 50,
               scrollbar = false,
+              max_height = 7,
             }),
         documentation = cmp.config.window.bordered({
               max_width = 40,
