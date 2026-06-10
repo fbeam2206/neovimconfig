@@ -7,7 +7,11 @@ return{
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "onsails/lspkind.nvim",  -- For icons
+      "onsails/lspkind.nvim", -- icons in the completion menu
+      "hrsh7th/cmp-nvim-lsp", -- LSP completion source
+      "hrsh7th/cmp-buffer",   -- current-buffer words source
+      "hrsh7th/cmp-path",     -- filesystem path source
+      "saadparwaiz1/cmp_luasnip", -- snippet completion source
     },
     config = function()
     local cmp = require("cmp")
@@ -15,7 +19,7 @@ return{
     require("luasnip.loaders.from_vscode").lazy_load()
     cmp.setup({
       performance = {
-        max_view_entries = 7,  -- Limit to 7 items shown at once
+        max_view_entries = 1000,  -- Limit to 7 items shown at once
       },
       snippet = {
         expand = function(args)

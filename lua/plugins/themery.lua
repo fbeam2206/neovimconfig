@@ -169,8 +169,8 @@ return {
             colorscheme = "randombones",
           },
           {
-            name = "neobones",
-            colorscheme = "forestbones",
+            name = "Gruber Darker",
+            colorscheme = "Gruber-Darker",
           },
         },
       livePreview = true,

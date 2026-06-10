@@ -9,7 +9,8 @@ return {
         "lua-language-server",  -- not lua_ls
         "css-lsp",              -- not cssls
         "hyprls",
-        "clangd"
+        "clangd",
+        "python-lsp-server"
       }
       local registry = require("mason-registry")
       
@@ -33,6 +34,7 @@ return {
       
       vim.lsp.config.lua_ls = {
         cmd = { 'lua-language-server' },
+        filetypes = { 'lua' },
         root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.git' },
       }
       
@@ -43,11 +45,18 @@ return {
       
       vim.lsp.config.hyprls = {
         cmd = { 'hyprls', '--stdio' },
+        filetypes = { 'hyprlang' },
         root_markers = { '.git' },
+      }
+
+      vim.lsp.config.pylsp = {
+        cmd = { 'pylsp' },
+        filetypes = { 'python' },
+        root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
       }
       
       -- Enable all LSP servers
-      vim.lsp.enable({ 'ast_grep', 'clangd', 'lua_ls', 'cssls', 'hyprls' })
+      vim.lsp.enable({ 'ast_grep', 'clangd', 'lua_ls', 'cssls', 'hyprls', 'pylsp' })
       
       -- LSP keybinds (buffer-local, only active when LSP is attached)
       vim.api.nvim_create_autocmd('LspAttach', {
