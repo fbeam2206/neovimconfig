@@ -24,11 +24,13 @@ return {
       -- Configure each LSP server (using LSP server names)
       vim.lsp.config.ast_grep = {
         cmd = { 'ast-grep', 'lsp' },
-        root_markers = { '.git' },
+        filetypes = { 'c', 'cpp', 'rust', 'go', 'java', 'python', 'javascript', 'typescript' },
+        root_markers = { 'sgconfig.yml', 'sgconfig.yaml', '.git' },
       }
-      
+
       vim.lsp.config.clangd = {
         cmd = { 'clangd' },
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
         root_markers = { '.clangd', 'compile_commands.json', '.git' },
       }
       
@@ -36,10 +38,25 @@ return {
         cmd = { 'lua-language-server' },
         filetypes = { 'lua' },
         root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.git' },
+        settings = {
+          Lua = {
+            -- Neovim exposes the `vim` global; tell lua_ls so it stops
+            -- flagging it as an undefined global.
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            -- Make the Neovim runtime files available for completion/hover.
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+          },
+        },
       }
       
       vim.lsp.config.cssls = {
         cmd = { 'vscode-css-language-server', '--stdio' },
+        filetypes = { 'css', 'scss', 'less' },
         root_markers = { 'package.json', '.git' },
       }
       
