@@ -54,6 +54,7 @@ return{
       },
       {
         { name = 'buffer' },
+        { name = 'path' }, -- filesystem path source (cmp-path)
       })
     })
   end,

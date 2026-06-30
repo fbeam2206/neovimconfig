@@ -73,7 +73,11 @@ return {
       }
       
       -- Enable all LSP servers
-      vim.lsp.enable({ 'ast_grep', 'clangd', 'lua_ls', 'cssls', 'hyprls', 'pylsp' })
+      -- Note: ast_grep is omitted here because its `ast-grep` binary is not
+      -- installed via Mason and it overlaps clangd/pylsp on c/cpp/python.
+      -- Add "ast-grep" to ensure_installed above and re-add 'ast_grep' here
+      -- if you want it.
+      vim.lsp.enable({ 'clangd', 'lua_ls', 'cssls', 'hyprls', 'pylsp' })
       
       -- LSP keybinds (buffer-local, only active when LSP is attached)
       vim.api.nvim_create_autocmd('LspAttach', {
