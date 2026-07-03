@@ -28,3 +28,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live gr
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 vim.keymap.set('n', '<leader>w', ':set wrap!<CR>', { noremap = true })
+-- Buffer navigation on Shift+L / Shift+H so that <Tab> (== <C-i> in a
+-- terminal) stays free for jumplist-forward.
+vim.keymap.set('n', 'L', ':bnext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+vim.keymap.set('n', 'H', ':bprev<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })

@@ -64,13 +64,6 @@ return{
     end,
   },
   {
-    "daltonmenezes/aura-theme",
-    name = "aura",
-    lazy = false,
-    config = function()
-    end,
-  },
-  {
     'bettervim/yugen.nvim',
     name = "yugen",
     config = function()
@@ -86,6 +79,24 @@ return{
         vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
       end,
       })
+    end,
+  },
+  {
+    'blazkowolf/gruber-darker.nvim',
+    name = "Gruber-Darker",
+    config = function()
+      --require('Gruber-Darker').setup({})
+      --vim.cmd.colorscheme('Gruber-Darker')  -- Then apply colorscheme
+      --vim.api.nvim_create_autocmd("ColorScheme", {
+      --     pattern = "Gruber-Darker",
+      --     callback = function()
+      --  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      --  vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+      --  vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+      --  vim.api.nvim_set_hl(0, "WinSeparator", { bg = "none" })
+      --  vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
+      --end,
+      --})
     end,
   },
   {

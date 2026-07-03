@@ -7,7 +7,11 @@ return{
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "onsails/lspkind.nvim",  -- For icons
+      "onsails/lspkind.nvim", -- icons in the completion menu
+      "hrsh7th/cmp-nvim-lsp", -- LSP completion source
+      "hrsh7th/cmp-buffer",   -- current-buffer words source
+      "hrsh7th/cmp-path",     -- filesystem path source
+      "saadparwaiz1/cmp_luasnip", -- snippet completion source
     },
     config = function()
     local cmp = require("cmp")
@@ -52,6 +56,7 @@ return{
       },
       {
         { name = 'buffer' },
+        { name = 'path' }, -- filesystem path source (cmp-path)
       })
     })
   end,
