@@ -172,6 +172,10 @@ return {
             name = "Gruber Darker",
             colorscheme = "Gruber-Darker",
           },
+          {
+            name = "macOS Classic Dark",
+            colorscheme = "macos-classic-dark",
+          },
         },
       livePreview = true,
       })

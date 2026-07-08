@@ -68,7 +68,6 @@ return{
     name = "yugen",
     config = function()
       require('yugen').setup({})
-      vim.cmd.colorscheme('yugen')  -- Then apply colorscheme
       vim.api.nvim_create_autocmd("ColorScheme", {
            pattern = "yugen",
            callback = function()

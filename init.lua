@@ -6,10 +6,8 @@ vim.cmd("set shiftwidth=2")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-require("config.lazy")
-vim.o.exrc = true
-vim.o.secure = true
-
+-- Registered before plugins load so it also fires for the colorscheme
+-- applied at startup (themery restores the last selected theme then).
 vim.api.nvim_create_autocmd("ColorScheme", {
   callback = function()
     vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
@@ -20,6 +18,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     vim.api.nvim_set_hl(0, "WinSeparator", { bg = "NONE" })
   end,
 })
+
+require("config.lazy")
+vim.o.exrc = true
+vim.o.secure = true
 
 vim.keymap.set('n', '<leader><CR>', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 local builtin = require('telescope.builtin')
