@@ -1,0 +1,10 @@
+// Default layout
+layout {
+  pane {
+    borderless true
+    size "80%" 
+  }
+  pane {
+    borderless false
+  }
+}

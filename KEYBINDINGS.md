@@ -57,17 +57,17 @@
 
 | Key | Action |
 | --- | --- |
-| `<C-h>` | Move to left window (tmux-aware) |
-| `<C-j>` | Move to window below (tmux-aware) |
-| `<C-k>` | Move to window above (tmux-aware) |
-| `<C-l>` | Move to right window (tmux-aware) |
+| `<C-h>` | Move to left window (zellij-aware) |
+| `<C-j>` | Move to window below (zellij-aware) |
+| `<C-k>` | Move to window above (zellij-aware) |
+| `<C-l>` | Move to right window (zellij-aware) |
 | `<C-\>` | Move to previous window/pane |
 | `=` | Vertical resize **+5** (wider) |
 | `-` | Vertical resize **−5** (narrower) |
 | `+` | Horizontal resize **+2** (taller) |
 | `_` | Horizontal resize **−2** (shorter) |
 
-> The `<C-h/j/k/l>` bindings seamlessly jump between Neovim splits *and* tmux panes.
+> The `<C-h/j/k/l>` bindings seamlessly jump between Neovim splits *and* zellij panes (via smart-splits.nvim + the vim-zellij-navigator zellij plugin).
 
 ---
 
