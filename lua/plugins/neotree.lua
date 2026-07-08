@@ -11,6 +11,7 @@ return {
     { "<leader>e", ":Neotree toggle<CR>", desc = "Toggle neo-tree" },
   },
   opts = {
+    close_if_last_window = true,
     window = {
       width = 18,
     },
