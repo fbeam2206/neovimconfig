@@ -2,7 +2,18 @@ return {
     "zaldih/themery.nvim",
     lazy = false,
     config = function()
-      require("themery").setup({
+      -- Themery false-positives its "themeConfigFile is deprecated" warning
+      -- on Windows: the unset option round-trips through fnamemodify(),
+      -- which mangles the v:null sentinel into "v:\null", so the plugin
+      -- thinks the option was set. Filter that one message during setup.
+      local themery = require("themery")
+      local orig_print = _G.print
+      _G.print = function(msg, ...)
+        if not (type(msg) == "string" and msg:find("themeConfigFile", 1, true)) then
+          orig_print(msg, ...)
+        end
+      end
+      local ok, err = pcall(themery.setup, {
         themes = {
           {
             name = "Rose Pine",
@@ -179,5 +190,9 @@ return {
         },
       livePreview = true,
       })
+      _G.print = orig_print
+      if not ok then
+        error(err)
+      end
     end
   }
