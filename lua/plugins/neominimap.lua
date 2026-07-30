@@ -18,6 +18,29 @@ return
 
     vim.g.neominimap = {
       auto_enable = true,
+
+      -- Thin-bar mode. The minimap is braille-only by design (it packs a 4x2
+      -- block of source characters into one glyph), so at 2 columns the dots
+      -- stop being readable and it reads as a colour strip instead: treesitter
+      -- tints comments/strings/keywords, diagnostics wash the line background.
+      --
+      -- One minimap column spans 2 dots, so visible source columns =
+      -- width * 2 * x_multiplier. 2 * 2 * 40 keeps a full 160-column line in
+      -- view; without raising x_multiplier the bar would only reflect the
+      -- first 16 characters of each line and everything past that is dropped.
+      x_multiplier = 40,
+      float = { minimap_width = 2 },
+      split = { minimap_width = 2, fix_width = true },
+
+      -- Sources of colour worth keeping in a 2-column bar.
+      treesitter = { enabled = true },
+      diagnostic = { enabled = true, mode = "line" },
+
+      -- These render into the sign column, which would cost more width than
+      -- the bar itself.
+      git = { enabled = false },
+      search = { enabled = false },
+      mark = { enabled = false },
     }
   end,
   config = function()
