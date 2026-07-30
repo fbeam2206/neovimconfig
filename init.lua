@@ -19,6 +19,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   end,
 })
 
+require("config.filetypes")
 -- Must be required before plugins load, so the shim is in place by the time
 -- nvim-treesitter registers its query predicates/directives.
 require("config.ts-compat")
