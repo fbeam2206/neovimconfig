@@ -83,11 +83,9 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         callback = function(args)
           local bufnr = args.buf
-          -- Floats only get a border when asked (vim.o.winborder is unset);
-          -- FloatBorder is styled by every theme, so this follows the scheme.
-          vim.keymap.set('n', 'K', function()
-            vim.lsp.buf.hover({ border = 'rounded' })
-          end, { buffer = bufnr })
+          -- The hover float's border comes from vim.o.winborder (init.lua),
+          -- same as diagnostics and the cmp menus.
+          vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr })
           vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, { buffer = bufnr })
           vim.keymap.set('n', '<leader>gD', vim.lsp.buf.declaration, { buffer = bufnr })
         end,

@@ -28,18 +28,14 @@ return{
         end,
       },
       window = {
-        -- On nvim 0.11+ bordered() falls back to vim.o.winborder, which is
-        -- unset here and resolves to no border — so ask for one explicitly.
-        -- The border uses the FloatBorder highlight, so it follows the
-        -- active colorscheme.
+        -- No `border` key: on nvim 0.11+ bordered() falls back to
+        -- vim.o.winborder (set in init.lua), so these match every other float.
         completion = cmp.config.window.bordered({
-              border = "rounded",
               max_width = 50,
               scrollbar = false,
               max_height = 7,
             }),
         documentation = cmp.config.window.bordered({
-              border = "rounded",
               max_width = 40,
             }),
       },

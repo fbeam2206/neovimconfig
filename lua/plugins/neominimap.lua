@@ -29,7 +29,10 @@ return
       -- view; without raising x_multiplier the bar would only reflect the
       -- first 16 characters of each line and everything past that is dropped.
       x_multiplier = 40,
-      float = { minimap_width = 2 },
+      -- Opt out of the global 'winborder' (init.lua): the minimap defaults
+      -- window_border to it, and a border would cost 2 more columns than the
+      -- bar itself plus box-draw the whole right edge of the window.
+      float = { minimap_width = 2, window_border = "none" },
       split = { minimap_width = 2, fix_width = true },
 
       -- Sources of colour worth keeping in a 2-column bar.

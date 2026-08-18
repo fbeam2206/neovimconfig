@@ -6,6 +6,16 @@ vim.cmd("set shiftwidth=2")
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- One border style for every float that doesn't ask for its own: LSP hover and
+-- signature help, diagnostic floats, the cmp menus, mason's UI, which-key.
+-- Set before plugins load, because some read it when their defaults are built
+-- (neominimap, nvim-cmp). Borders use the FloatBorder highlight, so they follow
+-- the active colorscheme.
+--
+-- Floats that pass an explicit border are unaffected: telescope draws its own
+-- (plenary forces border="none"), as do neo-tree and lazy.nvim.
+vim.o.winborder = "rounded"
+
 -- Registered before plugins load so it also fires for the colorscheme
 -- applied at startup (themery restores the last selected theme then).
 vim.api.nvim_create_autocmd("ColorScheme", {
